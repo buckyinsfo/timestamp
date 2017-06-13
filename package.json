@@ -1,14 +1,19 @@
 {
   "name": "fcc_api_proj",
   "version": "1.0.0",
-  "description": "Free Code Camp API Project. ",
+  "description": "Free Code Camp - TimeStamp Microservice API Project.",
   "main": "index.js",
   "scripts": {
-    "hot": "nodemon server.js",
+    "dev": "nodemon server.js",
     "test": "jasmine"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "RESTful",
+    "API",
+    "FCC",
+    "Project"
+  ],
+  "author": "tjs",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -17,11 +22,12 @@
     "mongoose": "^4.10.5",
     "node-restful": "^0.2.6"
   },
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "path": "^0.12.7"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/buckyinsfo/timestamp.git"
-  },
-  "devDependencies": {
-    "jasmine": "^2.6.0"
   }
 }

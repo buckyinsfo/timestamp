@@ -15,8 +15,16 @@ class convertDate {
         return res;
     }
 
+    static numToMonth( num ) {
+        var res = null;
+        if ( num >= 0 && num <= MONTHS.length ) {
+            res = MONTH[ num ];
+        }
+        return res;
+    }
+
     static convertToNatural(in_str) {
-        var result = '';
+        var result = null;
 
         if (in_str) {
 
@@ -46,6 +54,26 @@ class convertDate {
         return result;
     }
 
+    static convertToUnixTS( in_str ) {
+        var result = null;
+
+        if ( in_str ) {
+            let arr = in_str.split(' ');
+
+            if (arr.length === 1 && !isNaN(arr[0])) {
+                var date = new Date(arr[0]);
+                var month = date.getMonth();
+                var day = date.getDay();
+                var yr = date.getFullYear();
+
+                result = month + ' ' + day + ', ' + yr;
+
+            } else {
+                console.log(' alternate condition');
+            }
+        }
+        return result;
+    }
 }
 
 module.exports = convertDate;
