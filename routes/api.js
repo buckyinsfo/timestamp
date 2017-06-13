@@ -13,8 +13,8 @@ var apiRouter = function(app) {
     app.get("*", function(req, res) {
 
         var obj = { "unix": 1450137600, "natural": "December 15, 2015" };
-
-        res.send( JSON.stringify( obj ) );
+        res.send( req.url );
+        //res.send( JSON.stringify( obj ) );
     });
 }
 
