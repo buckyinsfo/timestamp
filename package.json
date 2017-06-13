@@ -1,16 +1,27 @@
 {
-  "name": "api_proj",
+  "name": "fcc_api_proj",
   "version": "1.0.0",
-  "description": "",
+  "description": "Free Code Camp API Project. ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "hot": "nodemon server.js",
+    "test": "jasmine"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
-    "mongodb": "^2.2.25"
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.10.5",
+    "node-restful": "^0.2.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buckyinsfo/timestamp.git"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0"
   }
 }
