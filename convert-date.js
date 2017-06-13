@@ -8,7 +8,7 @@ class convertDate {
         var res = null;
         for (var i = 0; i < MONTHS.length; i++) {
             if (name === MONTHS[i]) {
-                res = i;
+                res = i + 1;
                 break;
             }
         }
@@ -58,22 +58,33 @@ class convertDate {
         var result = null;
 
         if ( in_str ) {
+
+            if (in_str.charAt(0) === '/') {
+                in_str = in_str.slice(1);
+            }
+
+            in_str = in_str.replace( /,/g, "" );
+
             let arr = in_str.split(' ');
 
-            if (arr.length === 1 && !isNaN(arr[0])) {
-                var date = new Date(arr[0]);
-                var month = date.getMonth();
-                var day = date.getDay();
-                var yr = date.getFullYear();
+            if (arr.length === 3 /*&& !isNaN(arr[0]) */) {
 
-                result = month + ' ' + day + ', ' + yr;
+                var yr = arr[2];
+                var dy = "." + arr[1];
+                var mn = "." + this.strToMonth( arr[0] );
 
-            } else {
-                console.log(' alternate condition');
+                var dt = yr.concat( mn, dy );
+                //var date = new Date( dt );
+
+                //result = date.getTime()/1000;
+                //result = Date.parse( in_str ).getTime()/1000;
+                result = parseInt((new Date( dt ).getTime() / 1000).toFixed(0))
             }
         }
         return result;
     }
 }
+
+convertDate.convertToUnixTS('/November 08, 2008');
 
 module.exports = convertDate;
