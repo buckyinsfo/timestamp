@@ -14,11 +14,9 @@ var apiRouter = function(app) {
         var nat_dt = convertDate.convertToNatural( req.url );
 
         if ( epoch ) {
-            //nat_dt = convertDate.convertToNatural( epoch );
-            nat_dt = req.url;
+            nat_dt = convertDate.convertToNatural( epoch );
         } else if ( nat_dt ) {
-            //epoch = convertDate.convertToEpoch( nat_dt );
-            epoch = req.url;
+            epoch = convertDate.convertToEpoch( nat_dt );
         }
 
         var obj = { "unix": epoch, "natural": nat_dt };

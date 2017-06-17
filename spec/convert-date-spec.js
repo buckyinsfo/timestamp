@@ -94,7 +94,7 @@ describe("convert-date", function () {
         var obj = { "unix": epoch, "natural": nat_dt };
         expect( obj ).toEqual( { "unix": 319795200 , "natural": 'February 19, 1980' } );
     });
-    
+
     it("full circle epoch to natural date test", function () {
         var epoch = null;
         var nat_dt = convertDate.convertToNatural( '/319795200' );
