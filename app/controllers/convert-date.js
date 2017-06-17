@@ -69,39 +69,6 @@ class convertDate {
         }
         return result;
     }
-
-    static testcode() {
-        var epoch = this.convertToEpoch( '/February%2019,%201980' );
-        //var epoch = null;
-        //var nat_dt = this.convertToNatural( '/319795200' );
-
-        if ( epoch ) {
-            nat_dt = convertDate.convertToNatural( epoch );
-            //nat_dt = req.url;
-        } else if ( nat_dt ) {
-            epoch = convertDate.convertToEpoch( nat_dt );
-            //epoch = req.url;
-        }
-
-        var obj = { "unix": epoch, "natural": nat_dt };
-        console.log( JSON.stringify( obj ) );
-    }
-
-    static testcode2() {
-        var epoch = convertDate.convertToEpoch( '/February 19, 1980' );
-        var nat_dt = null;
-
-        if ( epoch ) {
-            nat_dt = convertDate.convertToNatural(epoch);
-        }
-        var obj = { "unix": epoch, "natural": nat_dt };
-        //_.isEqual(remoteJSON, localJSON)
-        //expect( obj ).toEqual( { "unix": 319795200 , "natural": 'February 19, 1980' } );
-    }
 }
-
-//convertDate.convertToEpoch('/February 19, 1980');
-//convertDate.testcode2();
-
 
 module.exports = convertDate;
