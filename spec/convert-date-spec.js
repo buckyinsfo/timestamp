@@ -1,4 +1,4 @@
-const convertDate = require("../convert-date");
+const convertDate = require("../app/controllers/convert-date");
 
 describe("convert-date", function () {
     it("convert NullMonth to number", function () {
@@ -73,7 +73,36 @@ describe("convert-date", function () {
     });
 
     it("convert natural date to unix timestamp", function () {
-        var unix_ts = convertDate.convertToUnixTS('/November 11, 2008');
+        var unix_ts = convertDate.convertToEpoch('/November 11, 2008');
         expect( unix_ts ).toBe( 1226390400 );
+    });
+
+    it("test to remove url encoding for spaces", function () {
+        var epoch_0 = convertDate.convertToEpoch( '/February 19, 1980' );
+        var epoch_1 = convertDate.convertToEpoch( '/February%2019,%201980' );
+
+        expect( epoch_0 ).toBe( epoch_1 );
+    });
+
+    it("full circle natural date to epoch test", function () {
+        var epoch = convertDate.convertToEpoch( '/February 19, 1980' );
+        var nat_dt = null;
+
+        if ( epoch ) {
+            nat_dt = convertDate.convertToNatural(epoch);
+        }
+        var obj = { "unix": epoch, "natural": nat_dt };
+        expect( obj ).toEqual( { "unix": 319795200 , "natural": 'February 19, 1980' } );
+    });
+    
+    it("full circle epoch to natural date test", function () {
+        var epoch = null;
+        var nat_dt = convertDate.convertToNatural( '/319795200' );
+
+        if ( nat_dt ) {
+            epoch = convertDate.convertToEpoch( nat_dt );
+        }
+        var obj = { "unix": epoch, "natural": nat_dt };
+        expect( obj ).toEqual( { "unix": 319795200 , "natural": 'February 19, 1980' } );
     });
 });
